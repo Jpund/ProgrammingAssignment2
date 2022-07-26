@@ -14,6 +14,18 @@
 ## of the environment in which the makeCacheMatrix was created. This the creation of the cache for the inverse of the matrix. The cache is emptied everytime
 ## a new matrix is being used in order not to have a matrix associated with a cache for another inverse.
 
+## First it defines that the argument of the function must be a matrix.
+##Then it sets an object inv to 0. 
+##Then the matrix is assigned to an object in the parent environment (of the function).
+##Inv is set to 0 in the parent environment, meaning the value is cleared there as well. So that no other matrix's inverse will be associated with that 
+##argument matrix.
+##The value of x is retrieved from the parent environment.
+##The function solve is assigned to the value of inv in the parent environment. At that moment the inverse is calculated.
+##The value of the inverse is retrieved from the parent environment.
+##The list is created with all the above cited elements so that they can be found in the parent environment because thanks to this list creation will contain 
+##the environment in which makeCacheMatrix xas written. This also why cacheSolve can only accept object that went through makeCacheMatrix because it relates on the 
+##functions present in the list.
+
 
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
